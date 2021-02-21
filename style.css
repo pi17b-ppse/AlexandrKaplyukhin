@@ -1,0 +1,43 @@
+.MAIN_DIV {
+    width: 306px;
+    margin: 0 auto;
+}
+
+.MAIN_DIV .div {
+    width: 90px;
+    height: 90px;
+    border: 2px solid #999;
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    font-size: 80px;
+    line-height: 94px;
+}
+
+.MAIN_DIV .kletka1,
+.MAIN_DIV .kletka2,
+.MAIN_DIV .kletka3 {
+    border-top: 5px solid #000;
+}
+
+.MAIN_DIV .kletka1,
+.MAIN_DIV .kletka4,
+.MAIN_DIV .kletka7 {
+    border-left: 5px solid #000;
+}
+
+.MAIN_DIV .kletka3,
+.MAIN_DIV .kletka6,
+.MAIN_DIV .kletka9 {
+    border-right: 5px solid #000;
+}
+
+.MAIN_DIV .kletka7,
+.MAIN_DIV .kletka8,
+.MAIN_DIV .kletka9 {
+    border-bottom: 5px solid #000;
+}
+
+#Res {
+    font-size: 24px;
+}
