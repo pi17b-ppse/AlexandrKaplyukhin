@@ -268,9 +268,3 @@ function check2user(znak) {
 /**
  *Подсветка желтым цветом поля, если ничья
  */
-function check() {
-    if ($('.kletka1').text() != '' && $('.kletka2').text() != '' && $('.kletka3').text() != '' && $('.kletka4').text() != '' && $('.kletka5').text() != '' && $('.kletka6').text() != '' && $('.kletka7').text() != '' && $('.kletka8').text() != '' && $('.kletka9').text() != '') {
-        $('.result').text("Ничья");
-        $('.kletka1, .kletka2, .kletka3, .kletka4, .kletka5, .kletka6, .kletka7, .kletka8, .kletka9').css("background-color", "#FFE097");
-    }
-}
