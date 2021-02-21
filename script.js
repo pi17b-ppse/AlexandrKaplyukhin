@@ -224,47 +224,7 @@ function check3user(znak) {
  *@param {integer} znak - знак О
  *@return {integer} +1 к счёту компьютера
  */
-function check2comp(znak) {
-    for (var i = 0; i < 8; i++) {
 
-        var first = 'kletka' + WinUserArray[i].substr(0, 1);
-        var second = 'kletka' + WinUserArray[i].substr(1, 1);
-        var third = 'kletka' + WinUserArray[i].substr(2, 1);
-
-        /**
-         * Проверка выигрыша коспьютера
-         */
-        if ($('.' + first).text() == znak && $('.' + second).text() == znak && $('.' + third).text() == '' && ExitFlag == false) {
-            $('.' + third).text(znak);
-            $('.' + first + ',.' + second + ',.' + third).css("background-color", "#EF7C7C");
-            $('.result').text('Вы проиграли!');
-            $('.MAIN_DIV .div').unbind('click');
-            ScoreComp++;
-            score();
-            ExitFlag = true;
-        }
-
-        if ($('.' + first).text() == znak && $('.' + second).text() == '' && $('.' + third).text() == znak && ExitFlag == false) {
-            $('.' + second).text(znak);
-            $('.' + first + ',.' + second + ',.' + third).css("background-color", "#EF7C7C");
-            $('.result').text('Вы проиграли!');
-            $('.MAIN_DIV .div').unbind('click');
-            ScoreComp++;
-            score();
-            ExitFlag = true;
-        }
-
-        if ($('.' + first).text() == '' && $('.' + second).text() == znak && $('.' + third).text() == znak && ExitFlag == false) {
-            $('.' + first).text(znak);
-            $('.' + first + ',.' + second + ',.' + third).css("background-color", "#EF7C7C");
-            $('.result').text('Вы проиграли!');
-            $('.MAIN_DIV .div').unbind('click');
-            ScoreComp++;
-            score();
-            ExitFlag = true;
-        }
-    }
-}
 
 /**
  *Определяем ход компьютера
