@@ -23,7 +23,7 @@
 .MAIN_DIV .kletka1,
 .MAIN_DIV .kletka4,
 .MAIN_DIV .kletka7 {
-    border-left: 5px solid #000;
+    border-left: 5px solid rgb(37, 37, 37);
 }
 
 .MAIN_DIV .kletka3,
