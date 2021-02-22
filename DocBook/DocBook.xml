@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://docbook.org/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://docbook.org/xml/5.1/sch/docbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<article xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1">
+    <info>
+        <title>Документация к проекту Крестики-нолики</title>
+        <author>
+            <personname>
+                <firstname>Александр</firstname>
+                <surname>Каплюхин</surname>
+            </personname>
+        </author>
+        <copyright>
+            <year>2021</year>
+            <holder>Александр Каплюхин</holder>
+        </copyright>
+    </info>
+    <chapter>
+        <title>Описание проекта</title>
+        <para>Данный проект является браузерной реализацией классической игры Крестики-нолики.</para>
+        <section>
+            <title>Особенности игры</title>
+            <para>Игрок по очереди с компьютером ставят на свободные клетки поля 3х3 знаки (игрок всегда крестики, компьютер - нолики).</para>
+            <para>Первый, выстроивший в ряд 3 своих фигуры по вертикали, горизонтали или диагонали, выигрывает. Первый ход делает игрок, ставящий крестики.</para>
+            <para>Обычно по завершении партии выигравшая сторона зачёркивает чертой свои три знака (нолика или крестика), составляющих сплошной ряд. В вариации данного проекта вместо подчёркивания выполгяется подсветка ряда (выигрыш игрока - зелёный, компьютера - красной). </para>
+        </section>
+    </chapter>
+    <chapter>
+        <title>Детали реализации</title>
+        <para>Особенности реализации отдельного функционала представлены ниже:</para>
+        <section>
+            <title>Определение победы игрока</title>
+            <example>
+                <programlisting><![CDATA[
+                function check3user(znak){
+                    for (var i = 0; i < 8; i++) {
+         
+                        var first = 'kletka' + win_user_array[i].substr(0,1);
+                        var second = 'kletka' + win_user_array[i].substr(1,1);
+                        var third = 'kletka' + win_user_array[i].substr(2,1);
+             
+                        if( $('.'+first).text() == znak && $('.'+second).text() == znak && $('.'+third).text() == znak ){
+                            $('.kletka1, .kletka2, .kletka3, .kletka4, .kletka5, .kletka6, .kletka7, .kletka8, .kletka9').css("background-color", "#FFF");
+                            $('.'+first+',.'+second+',.'+third).css("background-color", "#83e2c3");
+                            $('.result').text('Вы выиграли!');
+                            $('.MAIN_DIV .div').unbind('click');
+                            score_user++;
+                            Score();
+                            exit_flag = true;
+                         }    
+                     }
+                 }
+                ]]></programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Быстрый сброс фигуры</title>
+            <para>При нажатии кнопки "Перезакрузка" происходит сброс ходов.</para>
+            <example>
+                <programlisting><![CDATA[
+                function restart(){
+                    $('.result').text('Ваш ход!');
+                     $('.kletka1, .kletka2, .kletka3, .kletka4, .kletka5, .kletka6, .kletka7, .kletka8, .kletka9').text('');
+                    $('.kletka1, .kletka2, .kletka3, .kletka4, .kletka5, .kletka6, .kletka7, .kletka8, .kletka9').css("background-color", "#FFF");
+                    $( ".MAIN_DIV .div" ).bind("click", function (){
+ 
+                         //Если клетка пустая
+                        if( $(this).text() == '' ){
+                            $(this).text(znak_user);    
+                            check_3_user(znak_user);
+                            check_2_comp(znak_comp);
+                            check_2_user(znak_user);
+             
+                            if( exit_flag == false ){
+                                for (var i = 1; i < 10; i++) {    
+                                    if( $('.kletka'+i).text() == '' ){
+                                        $('.kletka'+i).text(znak_comp);
+                                        break;
+                                     }    
+                                }
+                        }else exit_flag = false;
+                    }
+                });
+                } 
+
+                ]]></programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Ничья</title>
+            <para>Подсветка желтым цветом поля игры, если произошла ничья</para>
+            <example>
+                <programlisting><![CDATA[
+                function check() {
+                    if ($('.kletka1').text() != '' && $('.kletka2').text() != '' && $('.kletka3').text() != '' &&  $('.kletka4').text() != '' && $('.kletka5').text() != '' && $('.kletka6').text() != '' && $('.kletka7').text() != '' && $('.kletka8').text() != '' && $('.kletka9').text() != ''){
+                        $('.result').text("Ничья"); 
+                        $('.kletka1, .kletka2, .kletka3, .kletka4, .kletka5, .kletka6, .kletka7, .kletka8, .kletka9').css("background-color", "#FFE097");  
+                     }
+                }
+                ]]></programlisting>
+            </example>
+        </section>
+    </chapter>
+</article>
+
+
+
